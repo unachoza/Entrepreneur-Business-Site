@@ -16,7 +16,7 @@ body {
   left: -900px;
   right: -900px;
   z-index: 0;
-  background: linear-gradient(to bottom, #a8a7a7 45%, #cc527a 50%, #e8175d 60%, #474747 0%, #363636 85%);
+  background: linear-gradient(to bottom,#F2F2F8 1%,#363636 65%, #474747 66%, #cc527a 72%, #e8175d 85%, #a8a7a7 87%, #f2f2f2 100%);
 }
 .effect-blurry {
   -webkit-filter: blur(900px);
