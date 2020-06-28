@@ -8,6 +8,7 @@ import Tab from '@material-ui/core/Tab';
 
 import { makeStyles } from '@material-ui/styles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import { Link } from 'react-router-dom';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -24,7 +25,7 @@ function ElevationScroll(props) {
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
-    margin: '150px',
+    margin: '30px',
   },
   tabContainer: {
     marginLeft: 'auto',
@@ -53,11 +54,11 @@ const Header = () => {
                 alt=""
               />
               <Tabs className={classes.tabContainer} value={value} onChange={handleChange} indicatorColor="primary">
-                <Tab className={classes.tab} label="Home" />
-                <Tab className={classes.tab} label="Services" />
-                <Tab className={classes.tab} label="Accounting" />
-                <Tab className={classes.tab} label="About" />
-                <Tab className={classes.tab} label="Contact" />
+                <Tab className={classes.tab} label="Home" component={Link} to="/" />
+                <Tab className={classes.tab} label="Services" component={Link} to="/services" />
+                <Tab className={classes.tab} label="Accounting" component={Link} to="/accounting" />
+                <Tab className={classes.tab} label="About" component={Link} to="/about" />
+                <Tab className={classes.tab} label="Contact" component={Link} to="/contact" />
               </Tabs>
             </Toolbar>
           </Typography>
