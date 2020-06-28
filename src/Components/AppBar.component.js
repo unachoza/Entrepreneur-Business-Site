@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <ElevationScroll>
       <AppBar position="static" >
-        <Toolbar> Heading Business</Toolbar>
+        <Toolbar>Rare Society Business</Toolbar>
       </AppBar>
     </ElevationScroll>
   );

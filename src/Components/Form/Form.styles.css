@@ -1,0 +1,12 @@
+form {
+  display: flex;
+  flex-direction: column;
+  border: solid 2px darkred;
+  margin: 20px;
+  width: fit-content;
+}
+input {
+  height: 50px;
+  width: 300px;
+  margin: 5px 0px;
+}
