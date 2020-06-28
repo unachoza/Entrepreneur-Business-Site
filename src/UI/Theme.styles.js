@@ -15,8 +15,12 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    h3: {
-      color: `${favGreen}`,
+    tab: {
+      fontFamily: 'Ubuntu, sans-serif',
+      fontWeight: 500,
+      fontSize: '1.2rem',
+      minWidth: 10,
+      margin: '25px',
     },
     h2: {
       fontWeight: 800,
