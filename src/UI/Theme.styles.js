@@ -4,6 +4,7 @@ import green from '@material-ui/core/colors/green';
 
 const favPurple = purple[900];
 const favGreen = green[500];
+
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -11,6 +12,14 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: `${favGreen}`,
+    },
+  },
+  typography: {
+    h3: {
+      color: `${favGreen}`,
+    },
+    h2: {
+      fontWeight: 800,
     },
   },
 });

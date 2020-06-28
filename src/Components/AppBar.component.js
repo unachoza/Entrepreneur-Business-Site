@@ -22,7 +22,9 @@ const Header = () => {
   return (
     <ElevationScroll>
       <AppBar position="fixed">
-        <Toolbar>Rare Society Business</Toolbar>
+        <Typography variant="h2" color="secondary">
+          <Toolbar>Rare Society Business</Toolbar>
+        </Typography>
       </AppBar>
     </ElevationScroll>
   );
