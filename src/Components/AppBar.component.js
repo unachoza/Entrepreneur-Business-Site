@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -35,9 +35,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const paths = {
+  0: '/',
+  1: '/services',
+  2: '/accounting',
+  3: '/about',
+  4: '/contact',
+};
+
 const Header = () => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    const { pathname } = window.location;
+    if (pathname === value && value !== paths[value]) setValue(value);
+  }, [value]);
 
   const handleChange = (e, value) => {
     setValue(value);
