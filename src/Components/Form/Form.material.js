@@ -16,12 +16,12 @@ export default function BasicTextFields() {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="outlined-basic" label="Client" variant="outlined" />
-      <TextField id="outlined-basic" label="Time" variant="outlined" />
-      <TextField id="outlined-basic" label="Transportation" variant="outlined" />
-      <TextField id="outlined-basic" label="Location" variant="outlined" />
-      <TextField id="outlined-basic" label="Type of Training" variant="outlined" />
-      <TextField id="outlined-basic" label="Food" variant="outlined" />
+      <TextField id="Client" label="Client" variant="outlined" />
+      <TextField id="Time" label="Time" variant="outlined" />
+      <TextField id="Transportation" label="Transportation" variant="outlined" />
+      <TextField id="Location" label="Location" variant="outlined" />
+      <TextField id="Training" label="Type of Training" variant="outlined" />
+      <TextField id="Food" label="Food" variant="outlined" />
     </form>
   );
 }
