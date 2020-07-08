@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider, mStyles } from '@material-ui/core/styles';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import theme from 'UI/Theme.styles.js';
+import theme from 'Components/UI/Theme.styles.js';
 import Button from '@material-ui/core/Button';
 import Header from 'Components/AppBar.component';
 import Form from 'Components/Form/Form.component';
@@ -15,11 +15,15 @@ function App() {
         <Header />
 
         <Switch>
-          <Route exact path="/" component={() => <div>Home</div>} />
+          <Route exact path="/" component={() => <div>Home but also not really home</div>} />
           <Route exact path="/services" component={() => <div>Services</div>} />
           <Route exact path="/accounting" component={() => <div>Accounting</div>} />
           <Route exact path="/about" component={() => <div>About</div>} />
-          <Route exact path="/contact" component={() => <div>Contact</div>} />
+          <Route
+            exact
+            path="/contact"
+            component={() => <div>Contact, only if you have something really important to say</div>}
+          />
           <Route exact path="/Show all" component={() => <div>Show all notification content</div>} />
           <Route exact path="/hidesensitive" component={() => <div>Hide sensitive notification content</div>} />
           <Route exact path="/hideall" component={() => <div>Hide all notification content</div>} />
