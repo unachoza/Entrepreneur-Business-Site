@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -33,6 +33,11 @@ const useStyles = makeStyles((theme) => ({
   tab: {
     ...theme.typography.tab,
   },
+  logoContainer: {
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+  },
 }));
 
 const paths = {
@@ -49,7 +54,11 @@ const Header = () => {
 
   useEffect(() => {
     const { pathname } = window.location;
-    if (pathname === value && value !== paths[value]) setValue(value);
+    if (pathname === '/' && value !== 0) setValue(0);
+    else if (pathname === '/services' && value !== 1) setValue(1);
+    else if (pathname === '/accounting' && value !== 2) setValue(2);
+    else if (pathname === '/about' && value !== 3) setValue(3);
+    else if (pathname === '/contact' && value !== 4) setValue(4);
   }, [value]);
 
   const handleChange = (e, value) => {
@@ -61,11 +70,21 @@ const Header = () => {
         <AppBar position="fixed">
           <Typography variant="h2">
             <Toolbar disableGutters>
-              <img
-                style={{ margin: '20px 100px' }}
-                src="https://res.cloudinary.com/dh41vh9dx/image/upload/v1593358166/lamed.png"
-                alt=""
-              />
+              <Button
+                component={Link}
+                to="/"
+                onClick={() => setValue(0)}
+                disableRipple
+                className={classes.logoContainer}
+              >
+                <img
+                  className={classes.logoContainer}
+                  style={{ margin: '20px 100px' }}
+                  src="https://res.cloudinary.com/dh41vh9dx/image/upload/v1593358166/lamed.png"
+                  alt=""
+                />
+              </Button>
+
               <Tabs className={classes.tabContainer} value={value} onChange={handleChange} indicatorColor="primary">
                 <Tab className={classes.tab} label="Home" component={Link} to="/" />
                 <Tab className={classes.tab} label="Services" component={Link} to="/services" />
