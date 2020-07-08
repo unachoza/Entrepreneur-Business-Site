@@ -24,12 +24,11 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Header />
-
         <Switch>
-          <Route exact path="/" component={() => <div>Home</div>} />
-          <Route exact path="/services" component={() => <div>Services</div>} />
+          <Route exact path="/" component={() => <div>HOME but not home also</div>} />
+          <Route exact path="/services" component={() => <div>Services that rule</div>} />
           <Route exact path="/accounting" component={() => <div>Accounting</div>} />
-          <Route exact path="/about" component={() => <div>About</div>} />
+          <Route exact path="/about" component={() => <div>About me, first off, i exist</div>} />
           <Route exact path="/contact" component={() => <div>Contact</div>} />
           <Route exact path="/Show all" component={() => <div>Show all notification content</div>} />
           <Route exact path="/hidesensitive" component={() => <div>Hide sensitive notification content</div>} />
