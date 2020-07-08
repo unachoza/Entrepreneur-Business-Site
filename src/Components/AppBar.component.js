@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 
 import { makeStyles } from '@material-ui/styles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -40,17 +42,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const paths = {
-  0: '/',
-  1: '/services',
-  2: '/accounting',
-  3: '/about',
-  4: '/contact',
-};
+//refactor massive if else statement,
+// const paths = {
+//   0: '/',
+//   1: '/services',
+//   2: '/accounting',
+//   3: '/about',
+//   4: '/contact',
+// };
 
 const Header = () => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(1);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const { pathname } = window.location;
@@ -63,6 +69,19 @@ const Header = () => {
 
   const handleChange = (e, value) => {
     setValue(value);
+  };
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
+    setOpen(true);
+    console.log('yes', e.currentTarget);
+  };
+  const handleMenuItemClick = (event, index) => {
+    setSelectedIndex(index);
+    setAnchorEl(null);
+  };
+  const handleClose = (e) => {
+    setAnchorEl(null);
+    setOpen(false);
   };
   return (
     <>
@@ -86,12 +105,61 @@ const Header = () => {
               </Button>
 
               <Tabs className={classes.tabContainer} value={value} onChange={handleChange} indicatorColor="primary">
-                <Tab className={classes.tab} label="Home" component={Link} to="/" />
-                <Tab className={classes.tab} label="Services" component={Link} to="/services" />
-                <Tab className={classes.tab} label="Accounting" component={Link} to="/accounting" />
-                <Tab className={classes.tab} label="About" component={Link} to="/about" />
-                <Tab className={classes.tab} label="Contact" component={Link} to="/contact" />
+                {anchorEl ? true : undefined}{' '}
+                <Tab
+                  aria-haspopup="true"
+                  aria-owns={anchorEl ? 'simple-menu' : undefined}
+                  className={classes.tab}
+                  label="Home"
+                  component={Link}
+                  to="/"
+                />
+                <Tab
+                  aria-haspopup={anchorEl ? true : undefined}
+                  aria-owns={anchorEl ? 'simple-menu' : undefined}
+                  className={classes.tab}
+                  onClick={(e) => handleClick(e)}
+                  label="Services"
+                  component={Link}
+                  to="/services"
+                />
+                <Tab
+                  aria-haspopup={anchorEl ? true : undefined}
+                  aria-owns={anchorEl ? 'simple-menu' : undefined}
+                  className={classes.tab}
+                  label="Accounting"
+                  component={Link}
+                  to="/accounting"
+                />
+                <Tab
+                  aria-haspopup={anchorEl ? true : undefined}
+                  aria-owns={anchorEl ? 'simple-menu' : undefined}
+                  className={classes.tab}
+                  label="About"
+                  component={Link}
+                  to="/about"
+                />
+                <Tab
+                  aria-haspopup={anchorEl ? true : undefined}
+                  aria-owns={anchorEl ? 'simple-menu' : undefined}
+                  className={classes.tab}
+                  label="Contact"
+                  component={Link}
+                  to="/contact"
+                />
               </Tabs>
+              <Menu id="lock-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
+                {servicesOptions.map((option, index) => (
+                  <MenuItem
+                    key={option}
+                    disabled={index === 0}
+                    selected={index === selectedIndex}
+                    onClick={(event) => handleMenuItemClick(event, index)}
+                  >
+                    {option}
+                  </MenuItem>
+                ))}
+              </Menu>
             </Toolbar>
           </Typography>
         </AppBar>
@@ -102,3 +170,22 @@ const Header = () => {
 };
 
 export default Header;
+
+const servicesOptions = [
+  'Services',
+  'Show all notification content',
+  'Hide sensitive notification content',
+  'Hide all notification content',
+];
+const contactOptions = [
+  'contact',
+  'Show all notification content',
+  'Hide sensitive notification content',
+  'Hide all notification content',
+];
+const otherOptions = [
+  'other',
+  'Show all notification content',
+  'Hide sensitive notification content',
+  'Hide all notification content',
+];
