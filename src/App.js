@@ -16,14 +16,13 @@ import Contact from 'Components/Contact';
 import Estimate from 'Components/Estimate';
 import Form from 'Components/Form/Form.component';
 import BasicTextFields from 'Components/Form/Form.material.js';
-import './App.css';
+import 'App.css';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Header />
-
         <Switch>
           <Route exact path="/" component={() => <div>Home but also not really home</div>} />
           <Route exact path="/services" component={() => <div>Services</div>} />
@@ -38,6 +37,7 @@ function App() {
           <Route exact path="/Show all" component={() => <div>Show all notification content</div>} />
           <Route exact path="/hidesensitive" component={() => <div>Hide sensitive notification content</div>} />
           <Route exact path="/hideall" component={() => <div>Hide all notification content</div>} />
+          <Route exact path="/form" component={Form} />
           <Form exact path="/form" component={Form} />
           <BasicTextFields />
         </Switch>

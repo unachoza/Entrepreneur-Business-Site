@@ -7,7 +7,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-
+import { useTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/styles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { Link } from 'react-router-dom';
@@ -27,21 +27,90 @@ function ElevationScroll(props) {
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
-    margin: '30px',
+    marginBottom: '3em',
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '2em',
+    },
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: '1.25em',
+    },
+  },
+  logo: {
+    height: '8em',
+    [theme.breakpoints.down('md')]: {
+      height: '7em',
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '5.5em',
+    },
+  },
+  logoContainer: {
+    padding: 0,
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
   },
   tabContainer: {
     marginLeft: 'auto',
   },
   tab: {
     ...theme.typography.tab,
+    minWidth: 10,
+    marginLeft: '25px',
   },
-  logoContainer: {
+  button: {
+    ...theme.typography.estimate,
+    borderRadius: '50px',
+    marginLeft: '50px',
+    marginRight: '25px',
+    height: '45px',
+    '&:hover': {
+      backgroundColor: theme.palette.secondary.light,
+    },
+  },
+  menu: {
+    // theme.palette.common.blue
+    backgroundColor: 'black',
+    color: 'white',
+    borderRadius: '0px',
+  },
+  menuItem: {
+    ...theme.typography.tab,
+    opacity: 0.7,
+    '&:hover': {
+      opacity: 1,
+    },
+  },
+  drawerIcon: {
+    height: '50px',
+    width: '50px',
+  },
+  drawerIconContainer: {
+    marginLeft: 'auto',
     '&:hover': {
       backgroundColor: 'transparent',
     },
   },
+  drawer: {
+    backgroundColor: theme.palette.common.blue,
+  },
+  drawerItem: {
+    ...theme.typography.tab,
+    color: 'white',
+    opacity: 0.7,
+  },
+  drawerItemEstimate: {
+    backgroundColor: theme.palette.common.orange,
+  },
+  drawerItemSelected: {
+    '& .MuiListItemText-root': {
+      opacity: 1,
+    },
+  },
+  appbar: {
+    zIndex: theme.zIndex.modal + 1,
+  },
 }));
-
 //refactor massive if else statement,
 // const paths = {
 //   0: '/',
@@ -53,10 +122,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
   const classes = useStyles();
+  const theme = useTheme();
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(1);
-  const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   useEffect(() => {
     const { pathname } = window.location;
@@ -64,7 +135,8 @@ const Header = () => {
     else if (pathname === '/services' && value !== 1) setValue(1);
     else if (pathname === '/accounting' && value !== 2) setValue(2);
     else if (pathname === '/about' && value !== 3) setValue(3);
-    else if (pathname === '/contact' && value !== 4) setValue(4);
+    else if (pathname === '/garden' && value !== 4) setValue(4);
+    else if (pathname === '/contact' && value !== 5) setValue(5);
   }, [value]);
 
   const handleChange = (e, value) => {
@@ -72,7 +144,7 @@ const Header = () => {
   };
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
-    setOpen(true);
+    setOpenMenu(true);
   };
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -80,7 +152,7 @@ const Header = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
-    setOpen(false);
+    setOpenMenu(false);
   };
   return (
     <>
@@ -104,7 +176,7 @@ const Header = () => {
               </Button>
 
               <Tabs className={classes.tabContainer} value={value} onChange={handleChange} indicatorColor="primary">
-                {anchorEl ? true : undefined}{' '}
+                {anchorEl ? true : undefined}
                 <Tab
                   aria-haspopup="true"
                   aria-owns={anchorEl ? 'simple-menu' : undefined}
@@ -156,23 +228,33 @@ const Header = () => {
                 />
               </Tabs>
               <Menu
-                id="lock-menu"
+                id="simple-menu"
                 anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
+                open={openMenu}
                 onClose={handleClose}
-                MenuListProps={{ onMouseLeave: handleClose }}
+                classes={{ paper: classes.menu }}
+                MenuListProps={{
+                  onMouseLeave: handleClose,
+                }}
+                elevation={0}
+                style={{ zIndex: 1302 }}
+                keepMounted
               >
-                {contactOptions.map((option, index) => (
+                {servicesOptions.map((option, index) => (
                   <MenuItem
-                    key={option}
+                    key={`${option}${index}`}
                     disabled={index === 0}
                     selected={index === selectedIndex}
-                    onClick={(event) => handleMenuItemClick(event, index)}
+                    onClick={(event) => {
+                      handleMenuItemClick(event, index);
+                      setValue(1);
+                      handleClose();
+                    }}
                     component={Link}
-                    to={`/${option}`}
+                    to={option.link}
+                    classes={{ root: classes.menuItem }}
                   >
-                    {option}
+                    {option.name}
                   </MenuItem>
                 ))}
               </Menu>
@@ -188,15 +270,27 @@ const Header = () => {
 export default Header;
 
 const servicesOptions = [
-  'Services',
-  'Show all notification content',
-  'Hide sensitive notification content',
-  'Hide all notification content',
-];
-const contactOptions = ['contact', 'Show all', 'Hidesensitive', 'Hideall '];
-const otherOptions = [
-  'other',
-  'Show all notification content',
-  'Hide sensitive notification content',
-  'Hide all notification content',
+  { name: 'Services', link: '/services' },
+  { name: 'Show all', link: '/Show all' },
+  { name: 'Hidesensitive', link: '/Hidesensitive' },
+  { name: 'Hideall', link: '/Hideall' },
+  { name: 'Services', link: '/services', activeIndex: 1, selectedIndex: 0 },
+  {
+    name: 'Custom Software Development',
+    link: '/customsoftware',
+    activeIndex: 1,
+    selectedIndex: 1,
+  },
+  {
+    name: 'iOS/Android App Development',
+    link: '/mobileapps',
+    activeIndex: 1,
+    selectedIndex: 2,
+  },
+  {
+    name: 'Website Development',
+    link: '/websites',
+    activeIndex: 1,
+    selectedIndex: 3,
+  },
 ];
