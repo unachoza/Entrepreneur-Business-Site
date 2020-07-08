@@ -41,6 +41,7 @@ function App() {
           <Form exact path="/form" component={Form} />
           <BasicTextFields />
         </Switch>
+        <Footer />
       </BrowserRouter>
     </ThemeProvider>
   );

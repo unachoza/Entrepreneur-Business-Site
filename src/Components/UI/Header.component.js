@@ -33,7 +33,7 @@ function ElevationScroll(props) {
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
-    marginBottom: '3em',
+    marginBottom: '4em',
     [theme.breakpoints.down('md')]: {
       marginBottom: '2em',
     },
@@ -98,7 +98,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   drawer: {
-    backgroundColor: theme.palette.common.blue,
+    // theme.palette.common.blue
+    backgroundColor: 'black',
   },
   drawerItem: {
     ...theme.typography.tab,
@@ -176,7 +177,7 @@ const Header = () => {
   ];
 
   const drawer = (
-    <>
+    <React.Fragment>
       <SwipeableDrawer
         // disableBackdropTransition={!iOS}
         // disableDiscovery={iOS}
@@ -230,11 +231,11 @@ const Header = () => {
       <IconButton className={classes.drawerIconContainer} onClick={() => setOpenDrawer(!openDrawer)} disableRipple>
         <MenuIcon className={classes.drawerIcon} />
       </IconButton>
-    </>
+    </React.Fragment>
   );
 
   return (
-    <>
+    <React.Fragment>
       <ElevationScroll>
         <AppBar position="fixed">
           <Typography variant="h2">
@@ -343,7 +344,7 @@ const Header = () => {
         </AppBar>
       </ElevationScroll>
       <div className={classes.toolbarMargin} />
-    </>
+    </React.Fragment>
   );
 };
 
