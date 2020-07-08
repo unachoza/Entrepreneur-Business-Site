@@ -155,12 +155,14 @@ const Header = () => {
                 onClose={handleClose}
                 MenuListProps={{ onMouseLeave: handleClose }}
               >
-                {servicesOptions.map((option, index) => (
+                {contactOptions.map((option, index) => (
                   <MenuItem
                     key={option}
                     disabled={index === 0}
                     selected={index === selectedIndex}
                     onClick={(event) => handleMenuItemClick(event, index)}
+                    component={Link}
+                    to={`/${option}`}
                   >
                     {option}
                   </MenuItem>
@@ -183,12 +185,7 @@ const servicesOptions = [
   'Hide sensitive notification content',
   'Hide all notification content',
 ];
-const contactOptions = [
-  'contact',
-  'Show all notification content',
-  'Hide sensitive notification content',
-  'Hide all notification content',
-];
+const contactOptions = ['contact', 'Show all', 'Hidesensitive', 'Hideall '];
 const otherOptions = [
   'other',
   'Show all notification content',

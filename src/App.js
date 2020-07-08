@@ -20,7 +20,9 @@ function App() {
           <Route exact path="/accounting" component={() => <div>Accounting</div>} />
           <Route exact path="/about" component={() => <div>About</div>} />
           <Route exact path="/contact" component={() => <div>Contact</div>} />
-
+          <Route exact path="/Show all" component={() => <div>Show all notification content</div>} />
+          <Route exact path="/hidesensitive" component={() => <div>Hide sensitive notification content</div>} />
+          <Route exact path="/hideall" component={() => <div>Hide all notification content</div>} />
           <Form />
           <BasicTextFields />
         </Switch>
