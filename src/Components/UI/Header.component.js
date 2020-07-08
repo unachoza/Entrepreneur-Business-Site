@@ -142,6 +142,14 @@ const Header = () => {
                   aria-haspopup={anchorEl ? true : undefined}
                   aria-owns={anchorEl ? 'simple-menu' : undefined}
                   className={classes.tab}
+                  label="Garden"
+                  component={Link}
+                  to="/garden"
+                />
+                <Tab
+                  aria-haspopup={anchorEl ? true : undefined}
+                  aria-owns={anchorEl ? 'simple-menu' : undefined}
+                  className={classes.tab}
                   label="Contact"
                   component={Link}
                   to="/contact"
