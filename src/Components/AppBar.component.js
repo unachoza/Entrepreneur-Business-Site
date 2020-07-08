@@ -73,13 +73,12 @@ const Header = () => {
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
     setOpen(true);
-    console.log('yes', e.currentTarget);
   };
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
     setAnchorEl(null);
   };
-  const handleClose = (e) => {
+  const handleClose = () => {
     setAnchorEl(null);
     setOpen(false);
   };
@@ -118,7 +117,7 @@ const Header = () => {
                   aria-haspopup={anchorEl ? true : undefined}
                   aria-owns={anchorEl ? 'simple-menu' : undefined}
                   className={classes.tab}
-                  onClick={(e) => handleClick(e)}
+                  onMouseEnter={(e) => handleClick(e)}
                   label="Services"
                   component={Link}
                   to="/services"
@@ -148,7 +147,14 @@ const Header = () => {
                   to="/contact"
                 />
               </Tabs>
-              <Menu id="lock-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
+              <Menu
+                id="lock-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+                MenuListProps={{ onMouseLeave: handleClose }}
+              >
                 {servicesOptions.map((option, index) => (
                   <MenuItem
                     key={option}
