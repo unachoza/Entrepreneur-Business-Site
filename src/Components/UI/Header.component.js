@@ -11,6 +11,12 @@ import { useTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/styles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { Link } from 'react-router-dom';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -154,6 +160,79 @@ const Header = () => {
     setAnchorEl(null);
     setOpenMenu(false);
   };
+  const routes = [
+    { name: 'Home', link: '/', activeIndex: 0 },
+    {
+      name: 'Services',
+      link: '/services',
+      activeIndex: 1,
+      ariaOwns: anchorEl ? 'simple-menu' : undefined,
+      ariaPopup: anchorEl ? 'true' : undefined,
+      mouseOver: (event) => handleClick(event),
+    },
+    { name: 'The Revolution', link: '/revolution', activeIndex: 2 },
+    { name: 'About Us', link: '/about', activeIndex: 3 },
+    { name: 'Contact Us', link: '/contact', activeIndex: 4 },
+  ];
+
+  const drawer = (
+    <>
+      <SwipeableDrawer
+        // disableBackdropTransition={!iOS}
+        // disableDiscovery={iOS}
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        onOpen={() => setOpenDrawer(true)}
+        classes={{ paper: classes.drawer }}
+      >
+        <div className={classes.toolbarMargin} />
+        <List disablePadding>
+          {routes.map((route) => (
+            <ListItem
+              divider
+              key={`${route}${route.activeIndex}`}
+              button
+              component={Link}
+              to={route.link}
+              selected={value === route.activeIndex}
+              classes={{ selected: classes.drawerItemSelected }}
+              onClick={() => {
+                setOpenDrawer(false);
+                setValue(route.activeIndex);
+              }}
+            >
+              <ListItemText className={classes.drawerItem} disableTypography>
+                {route.name}
+              </ListItemText>
+            </ListItem>
+          ))}
+          <ListItem
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(5);
+            }}
+            divider
+            button
+            component={Link}
+            classes={{
+              root: classes.drawerItemEstimate,
+              selected: classes.drawerItemSelected,
+            }}
+            to="/estimate"
+            selected={value === 5}
+          >
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Free Estimate
+            </ListItemText>
+          </ListItem>
+        </List>
+      </SwipeableDrawer>
+      <IconButton className={classes.drawerIconContainer} onClick={() => setOpenDrawer(!openDrawer)} disableRipple>
+        <MenuIcon className={classes.drawerIcon} />
+      </IconButton>
+    </>
+  );
+
   return (
     <>
       <ElevationScroll>
@@ -174,7 +253,6 @@ const Header = () => {
                   alt=""
                 />
               </Button>
-
               <Tabs className={classes.tabContainer} value={value} onChange={handleChange} indicatorColor="primary">
                 {anchorEl ? true : undefined}
                 <Tab
@@ -226,7 +304,9 @@ const Header = () => {
                   component={Link}
                   to="/contact"
                 />
+                {drawer}
               </Tabs>
+
               <Menu
                 id="simple-menu"
                 anchorEl={anchorEl}
