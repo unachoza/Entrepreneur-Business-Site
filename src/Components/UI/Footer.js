@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
     color: 'white',
     width: '100%',
-    zIndex: 1302,
+    zIndex: -1,
     position: 'fixed',
     bottom: 0,
     height: '8vh',
