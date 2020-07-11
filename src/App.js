@@ -36,23 +36,46 @@ function App() {
             path="/about"
             render={(props) => <About {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
           />
-          <Route exact path="/services" component={() => <div>Services</div>} />
+          <Route
+            exact
+            path="/revolution"
+            render={(props) => <Revolution {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
+          <Route
+            exact
+            path="/services"
+            render={(props) => <Services {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
+          <Route
+            exact
+            path="/customsoftware"
+            render={(props) => <CustomSoftware {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
+          <Route
+            exact
+            path="/mobileapps"
+            render={(props) => <MobileApps {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
+          <Route
+            exact
+            path="/websites"
+            render={(props) => <Websites {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
+          <Route
+            exact
+            path="/contact"
+            render={(props) => <Contact {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
+          <Route
+            exact
+            path="/estimate"
+            render={(props) => <Estimate {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
           <Route
             exact
             path="/contact"
             component={() => <div>Contact, only if you have something really important to say</div>}
           />
-
-          <Route exact path="/accounting" component={() => <div>Accounting</div>} />
-          <Route exact path="/about" component={() => <div>About</div>} />
-          <Route exact path="/garden" component={() => <div>Garden</div>} />
-
-          <Route exact path="/Show all" component={() => <div>Show all notification content</div>} />
-          <Route exact path="/hidesensitive" component={() => <div>Hide sensitive notification content</div>} />
-          <Route exact path="/hideall" component={() => <div>Hide all notification content</div>} />
-          <Route exact path="/form" component={Form} />
-          <Form exact path="/form" component={Form} />
-          <BasicTextFields />
         </Switch>
         <Footer setValue={setValue} setSelectedIndex={setSelectedIndex} />
       </BrowserRouter>

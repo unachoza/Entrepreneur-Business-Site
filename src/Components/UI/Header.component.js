@@ -358,10 +358,6 @@ const Header = () => {
 export default Header;
 
 const servicesOptions = [
-  { name: 'Services', link: '/services' },
-  { name: 'Show all', link: '/Show all' },
-  { name: 'Hidesensitive', link: '/Hidesensitive' },
-  { name: 'Hideall', link: '/Hideall' },
   { name: 'Services', link: '/services', activeIndex: 1, selectedIndex: 0 },
   {
     name: 'Custom Software Development',
