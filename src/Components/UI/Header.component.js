@@ -9,6 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { useTheme } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { Link } from 'react-router-dom';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -130,6 +131,8 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
   const classes = useStyles();
   const theme = useTheme();
+  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(1);
@@ -179,8 +182,8 @@ const Header = () => {
   const drawer = (
     <React.Fragment>
       <SwipeableDrawer
-        // disableBackdropTransition={!iOS}
-        // disableDiscovery={iOS}
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
@@ -233,6 +236,94 @@ const Header = () => {
       </IconButton>
     </React.Fragment>
   );
+  const tabs = (
+    <>
+      <Tabs className={classes.tabContainer} value={value} onChange={handleChange} indicatorColor="primary">
+        {anchorEl ? true : undefined}
+        <Tab
+          aria-haspopup="true"
+          aria-owns={anchorEl ? 'simple-menu' : undefined}
+          className={classes.tab}
+          label="Home"
+          component={Link}
+          to="/"
+        />
+        <Tab
+          aria-haspopup={anchorEl ? true : undefined}
+          aria-owns={anchorEl ? 'simple-menu' : undefined}
+          className={classes.tab}
+          onMouseEnter={(e) => handleClick(e)}
+          label="Services"
+          component={Link}
+          to="/services"
+        />
+        <Tab
+          aria-haspopup={anchorEl ? true : undefined}
+          aria-owns={anchorEl ? 'simple-menu' : undefined}
+          className={classes.tab}
+          label="Accounting"
+          component={Link}
+          to="/accounting"
+        />
+        <Tab
+          aria-haspopup={anchorEl ? true : undefined}
+          aria-owns={anchorEl ? 'simple-menu' : undefined}
+          className={classes.tab}
+          label="About"
+          component={Link}
+          to="/about"
+        />
+        <Tab
+          aria-haspopup={anchorEl ? true : undefined}
+          aria-owns={anchorEl ? 'simple-menu' : undefined}
+          className={classes.tab}
+          label="Garden"
+          component={Link}
+          to="/garden"
+        />
+        <Tab
+          aria-haspopup={anchorEl ? true : undefined}
+          aria-owns={anchorEl ? 'simple-menu' : undefined}
+          className={classes.tab}
+          label="Contact"
+          component={Link}
+          to="/contact"
+        />
+      </Tabs>
+
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        open={openMenu}
+        onClose={handleClose}
+        classes={{ paper: classes.menu }}
+        MenuListProps={{
+          onMouseLeave: handleClose,
+        }}
+        elevation={0}
+        style={{ zIndex: 1302 }}
+        keepMounted
+      >
+        {servicesOptions.map((option, index) => (
+          <MenuItem
+            key={`${option}${index}`}
+            disabled={index === 0}
+            selected={index === selectedIndex}
+            onClick={(event) => {
+              handleMenuItemClick(event, index);
+              setValue(1);
+              handleClose();
+            }}
+            component={Link}
+            to={option.link}
+            classes={{ root: classes.menuItem }}
+          >
+            {option.name}
+          </MenuItem>
+        ))}
+      </Menu>
+    </>
+  );
 
   return (
     <React.Fragment>
@@ -254,91 +345,7 @@ const Header = () => {
                   alt=""
                 />
               </Button>
-              <Tabs className={classes.tabContainer} value={value} onChange={handleChange} indicatorColor="primary">
-                {anchorEl ? true : undefined}
-                <Tab
-                  aria-haspopup="true"
-                  aria-owns={anchorEl ? 'simple-menu' : undefined}
-                  className={classes.tab}
-                  label="Home"
-                  component={Link}
-                  to="/"
-                />
-                <Tab
-                  aria-haspopup={anchorEl ? true : undefined}
-                  aria-owns={anchorEl ? 'simple-menu' : undefined}
-                  className={classes.tab}
-                  onMouseEnter={(e) => handleClick(e)}
-                  label="Services"
-                  component={Link}
-                  to="/services"
-                />
-                <Tab
-                  aria-haspopup={anchorEl ? true : undefined}
-                  aria-owns={anchorEl ? 'simple-menu' : undefined}
-                  className={classes.tab}
-                  label="Accounting"
-                  component={Link}
-                  to="/accounting"
-                />
-                <Tab
-                  aria-haspopup={anchorEl ? true : undefined}
-                  aria-owns={anchorEl ? 'simple-menu' : undefined}
-                  className={classes.tab}
-                  label="About"
-                  component={Link}
-                  to="/about"
-                />
-                <Tab
-                  aria-haspopup={anchorEl ? true : undefined}
-                  aria-owns={anchorEl ? 'simple-menu' : undefined}
-                  className={classes.tab}
-                  label="Garden"
-                  component={Link}
-                  to="/garden"
-                />
-                <Tab
-                  aria-haspopup={anchorEl ? true : undefined}
-                  aria-owns={anchorEl ? 'simple-menu' : undefined}
-                  className={classes.tab}
-                  label="Contact"
-                  component={Link}
-                  to="/contact"
-                />
-                {drawer}
-              </Tabs>
-
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                open={openMenu}
-                onClose={handleClose}
-                classes={{ paper: classes.menu }}
-                MenuListProps={{
-                  onMouseLeave: handleClose,
-                }}
-                elevation={0}
-                style={{ zIndex: 1302 }}
-                keepMounted
-              >
-                {servicesOptions.map((option, index) => (
-                  <MenuItem
-                    key={`${option}${index}`}
-                    disabled={index === 0}
-                    selected={index === selectedIndex}
-                    onClick={(event) => {
-                      handleMenuItemClick(event, index);
-                      setValue(1);
-                      handleClose();
-                    }}
-                    component={Link}
-                    to={option.link}
-                    classes={{ root: classes.menuItem }}
-                  >
-                    {option.name}
-                  </MenuItem>
-                ))}
-              </Menu>
+              {matches ? drawer : tabs}
             </Toolbar>
           </Typography>
         </AppBar>
