@@ -190,7 +190,7 @@ const Header = () => {
         classes={{ paper: classes.drawer }}
       >
         <div className={classes.toolbarMargin} />
-        <List disablePadding>
+        <List>
           {routes.map((route) => (
             <ListItem
               divider
