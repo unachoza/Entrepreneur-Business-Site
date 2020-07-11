@@ -180,7 +180,7 @@ const Header = () => {
   ];
 
   const drawer = (
-    <React.Fragment>
+    <>
       <SwipeableDrawer
         disableBackdropTransition={!iOS}
         disableDiscovery={iOS}
@@ -234,7 +234,7 @@ const Header = () => {
       <IconButton className={classes.drawerIconContainer} onClick={() => setOpenDrawer(!openDrawer)} disableRipple>
         <MenuIcon className={classes.drawerIcon} />
       </IconButton>
-    </React.Fragment>
+    </>
   );
   const tabs = (
     <>
@@ -326,7 +326,7 @@ const Header = () => {
   );
 
   return (
-    <React.Fragment>
+    <>
       <ElevationScroll>
         <AppBar position="fixed">
           <Typography variant="h3">
@@ -351,7 +351,7 @@ const Header = () => {
         </AppBar>
       </ElevationScroll>
       <div className={classes.toolbarMargin} />
-    </React.Fragment>
+    </>
   );
 };
 

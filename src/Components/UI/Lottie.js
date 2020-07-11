@@ -123,7 +123,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ThisLottie = () => {
+const ThisLottie = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
@@ -154,7 +154,7 @@ const ThisLottie = () => {
                     to="/estimate"
                     className={classes.estimateButton}
                     variant="contained"
-                    // onClick={() => props.setValue(5)}
+                    onClick={() => props.setValue(5)}
                   >
                     Free Estimate
                   </Button>
@@ -165,7 +165,7 @@ const ThisLottie = () => {
                     to="/revolution"
                     className={classes.learnButtonHero}
                     variant="outlined"
-                    // onClick={() => props.setValue(2)}
+                    onClick={() => props.setValue(2)}
                   >
                     <span style={{ marginRight: 10 }}>Learn More</span>
                     <ButtonArrow width={15} height={15} fill="red" />
@@ -207,10 +207,10 @@ const ThisLottie = () => {
                 to="/customsoftware"
                 variant="outlined"
                 className={classes.learnButton}
-                // onClick={() => {
-                //   props.setValue(1);
-                //   props.setSelectedIndex(1);
-                // }}
+                onClick={() => {
+                  props.setValue(1);
+                  props.setSelectedIndex(1);
+                }}
               >
                 <span style={{ marginRight: 10 }}>Learn More</span>
                 <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
@@ -249,10 +249,10 @@ const ThisLottie = () => {
                 to="/mobileapps"
                 variant="outlined"
                 className={classes.learnButton}
-                // onClick={() => {
-                //   props.setValue(1);
-                //   props.setSelectedIndex(2);
-                // }}
+                onClick={() => {
+                  props.setValue(1);
+                  props.setSelectedIndex(2);
+                }}
               >
                 <span style={{ marginRight: 10 }}>Learn More</span>
                 <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
@@ -289,10 +289,10 @@ const ThisLottie = () => {
                 to="/websites"
                 variant="outlined"
                 className={classes.learnButton}
-                // onClick={() => {
-                //   props.setValue(1);
-                //   props.setSelectedIndex(3);
-                // }}
+                onClick={() => {
+                  props.setValue(1);
+                  props.setSelectedIndex(3);
+                }}
               >
                 <span style={{ marginRight: 10 }}>Learn More</span>
                 <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
@@ -323,7 +323,7 @@ const ThisLottie = () => {
                       to="/revolution"
                       className={classes.learnButtonHero}
                       variant="outlined"
-                      // onClick={() => props.setValue(2)}
+                      onClick={() => props.setValue(2)}
                     >
                       <span style={{ marginRight: 10 }}>Learn More</span>
                       <ButtonArrow width={15} height={15} fill={theme.palette.common.blue} />
@@ -365,7 +365,7 @@ const ThisLottie = () => {
                       variant="outlined"
                       style={{ color: 'white', borderColor: 'white' }}
                       className={classes.learnButton}
-                      // onClick={() => props.setValue(3)}
+                      onClick={() => props.setValue(3)}
                     >
                       <span style={{ marginRight: 10 }}>Learn More</span>
                       <ButtonArrow width={10} height={10} fill="white" />
@@ -398,7 +398,7 @@ const ThisLottie = () => {
                       variant="outlined"
                       style={{ color: 'white', borderColor: 'white' }}
                       className={classes.learnButton}
-                      // onClick={() => props.setValue(4)}
+                      onClick={() => props.setValue(4)}
                     >
                       <span style={{ marginRight: 10 }}>Learn More</span>
                       <ButtonArrow width={10} height={10} fill="white" />
@@ -412,7 +412,7 @@ const ThisLottie = () => {
         <Grid item>
           {/*-----Call To Action Block-----*/}
           {/* setValue={props.setValue} */}
-          <CallToAction />
+          <CallToAction setValue={props.setValue} />
         </Grid>
       </Grid>
     </>

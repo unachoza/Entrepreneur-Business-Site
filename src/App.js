@@ -26,7 +26,16 @@ function App() {
       <BrowserRouter>
         <Header value={value} setValue={setValue} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} />
         <Switch>
-          <Route exact path="/" component={ThisLottie} />
+          <Route
+            exact
+            path="/"
+            render={(props) => <ThisLottie {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
+          <Route
+            exact
+            path="/about"
+            render={(props) => <About {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
           <Route exact path="/services" component={() => <div>Services</div>} />
           <Route
             exact
@@ -45,7 +54,7 @@ function App() {
           <Form exact path="/form" component={Form} />
           <BasicTextFields />
         </Switch>
-        <Footer />
+        <Footer setValue={setValue} setSelectedIndex={setSelectedIndex} />
       </BrowserRouter>
     </ThemeProvider>
   );
