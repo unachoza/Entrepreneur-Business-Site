@@ -32,12 +32,16 @@ const theme = createMuiTheme({
       margin: '25px',
     },
     h2: {
-      fontWeight: 800,
+      fontFamily: 'Raleway',
+      fontWeight: 700,
+      fontSize: '2.5rem',
+      color: favPurple,
+      lineHeight: 1.5,
     },
     h3: {
       fontFamily: 'Pacifico',
       fontSize: '2.5rem',
-      color: arcBlue,
+      color: 'white',
     },
     h4: {
       // fontFamily: 'Raleway',

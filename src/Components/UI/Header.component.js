@@ -34,7 +34,7 @@ function ElevationScroll(props) {
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
-    marginBottom: '4em',
+    marginBottom: '10em',
     [theme.breakpoints.down('md')]: {
       marginBottom: '2em',
     },
@@ -329,7 +329,7 @@ const Header = () => {
     <React.Fragment>
       <ElevationScroll>
         <AppBar position="fixed">
-          <Typography variant="h2">
+          <Typography variant="h3">
             <Toolbar disableGutters>
               <Button
                 component={Link}

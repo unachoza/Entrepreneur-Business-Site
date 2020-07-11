@@ -143,7 +143,6 @@ export const LandingPage = (props) => {
   return (
     <Grid container direction="column" className={classes.mainContainer}>
       <Grid item>
-        {' '}
         {/*-----Hero Block-----*/}
         <Grid container justify="flex-end" alignItems="center" direction="row">
           <Grid sm item className={classes.heroTextContainer}>
