@@ -18,6 +18,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import logo from 'assets/logo.svg';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -71,6 +72,17 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '50px',
     marginRight: '25px',
     height: '45px',
+    '&:hover': {
+      backgroundColor: theme.palette.secondary.light,
+    },
+  },
+  estimateButton: {
+    ...theme.typography.estimate,
+    backgroundColor: theme.palette.common.orange,
+    borderRadius: 50,
+    height: 45,
+    width: 145,
+    marginRight: 40,
     '&:hover': {
       backgroundColor: theme.palette.secondary.light,
     },
@@ -257,14 +269,7 @@ const Header = () => {
           component={Link}
           to="/services"
         />
-        <Tab
-          aria-haspopup={anchorEl ? true : undefined}
-          aria-owns={anchorEl ? 'simple-menu' : undefined}
-          className={classes.tab}
-          label="Accounting"
-          component={Link}
-          to="/accounting"
-        />
+
         <Tab
           aria-haspopup={anchorEl ? true : undefined}
           aria-owns={anchorEl ? 'simple-menu' : undefined}
@@ -273,14 +278,7 @@ const Header = () => {
           component={Link}
           to="/about"
         />
-        <Tab
-          aria-haspopup={anchorEl ? true : undefined}
-          aria-owns={anchorEl ? 'simple-menu' : undefined}
-          className={classes.tab}
-          label="Garden"
-          component={Link}
-          to="/garden"
-        />
+
         <Tab
           aria-haspopup={anchorEl ? true : undefined}
           aria-owns={anchorEl ? 'simple-menu' : undefined}
@@ -290,7 +288,16 @@ const Header = () => {
           to="/contact"
         />
       </Tabs>
-
+      <Button
+        component={Link}
+        to="/estimate"
+        variant="contained"
+        color="secondary"
+        className={classes.button}
+        onClick={() => setValue(5)}
+      >
+        Free Estimate
+      </Button>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -338,12 +345,7 @@ const Header = () => {
                 disableRipple
                 className={classes.logoContainer}
               >
-                <img
-                  className={classes.logoContainer}
-                  style={{ margin: '20px 100px' }}
-                  src="https://res.cloudinary.com/dh41vh9dx/image/upload/v1593358166/lamed.png"
-                  alt=""
-                />
+                <img alt="company logo" className={classes.logo} src={logo} />
               </Button>
               {matches ? drawer : tabs}
             </Toolbar>

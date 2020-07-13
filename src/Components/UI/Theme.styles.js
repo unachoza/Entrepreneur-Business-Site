@@ -11,15 +11,15 @@ const arcGrey = '#868686';
 const theme = createMuiTheme({
   palette: {
     common: {
-      blue: arcBlue,
+      blue: favPurple,
       orange: favPurple,
     },
     primary: {
       main: favPurple,
-      otherMain: arcBlue,
+      otherMain: favPurple,
     },
     secondary: {
-      main: favGreen,
+      main: arcBlue,
       otherMain: arcOrange,
     },
   },
@@ -52,13 +52,13 @@ const theme = createMuiTheme({
     h4: {
       // fontFamily: 'Raleway',
       fontSize: '1.75rem',
-      color: arcBlue,
+      color: favPurple,
       fontWeight: 700,
     },
     h6: {
       fontWeight: 500,
       // fontFamily: 'Raleway',
-      color: arcBlue,
+      color: favPurple,
     },
     subtitle1: {
       fontSize: '1.25rem',
@@ -81,10 +81,10 @@ const theme = createMuiTheme({
       color: arcGrey,
     },
     learnButton: {
-      borderColor: arcBlue,
+      borderColor: favPurple,
       borderWidth: 2,
       textTransform: 'none',
-      color: arcBlue,
+      color: favPurple,
       borderRadius: 50,
       fontFamily: 'Roboto',
       fontWeight: 'bold',
@@ -93,7 +93,7 @@ const theme = createMuiTheme({
   overrides: {
     MuiInputLabel: {
       root: {
-        color: arcBlue,
+        color: favPurple,
         fontSize: '1rem',
       },
     },
@@ -104,10 +104,10 @@ const theme = createMuiTheme({
       },
       underline: {
         '&:before': {
-          borderBottom: `2px solid ${arcBlue}`,
+          borderBottom: `2px solid ${favPurple}`,
         },
         '&:hover:not($disabled):not($focused):not($error):before': {
-          borderBottom: `2px solid ${arcBlue}`,
+          borderBottom: `2px solid ${favPurple}`,
         },
       },
     },
@@ -117,7 +117,7 @@ export default theme;
 // export default createMuiTheme({
 //   palette: {
 //     common: {
-//       blue: arcBlue,
+//       blue: favPurple,
 //       orange: arcOrange,
 //     },
 //     primary: {
