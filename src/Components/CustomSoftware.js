@@ -159,7 +159,7 @@ export default function CustomSoftware(props) {
             <Typography variant="h4">Save Energy</Typography>
           </Grid>
           <Grid item>
-            <img src={lightbulb} alt="lightbulb" />
+            <img style={{ color: '#007E6B' }} src={lightbulb} alt="lightbulb" />
           </Grid>
         </Grid>
         <Grid
