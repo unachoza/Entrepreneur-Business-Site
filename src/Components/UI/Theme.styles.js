@@ -12,7 +12,7 @@ const theme = createMuiTheme({
   palette: {
     common: {
       blue: arcBlue,
-      orange: favGreen,
+      orange: favPurple,
     },
     primary: {
       main: favPurple,
@@ -30,6 +30,12 @@ const theme = createMuiTheme({
       fontSize: '1.2rem',
       minWidth: 10,
       margin: '25px',
+    },
+    estimate: {
+      fontFamily: 'Pacifico',
+      fontSize: '1rem',
+      textTransform: 'none',
+      color: 'white',
     },
     h2: {
       fontFamily: 'Raleway',
