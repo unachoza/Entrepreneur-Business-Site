@@ -4,20 +4,20 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import ButtonArrow from 'Components/UI/ButtonArrow';
+import ButtonArrow from './Components/UI/ButtonArrow';
 import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
-import CallToAction from 'Components/UI/CallToAction';
+import CallToAction from './UI/CallToAction';
 
-import animationData from 'animations/landinganimation/data';
-import customSoftwareIcon from 'assets/Custom Software Icon.svg';
-import mobileAppsIcon from 'assets/mobileIcon.svg';
-import websitesIcon from 'assets/websiteIcon.svg';
-import revolutionBackground from 'assets/repeatingBackground.svg';
-import infoBackground from 'assets/infoBackground.svg';
+import animationData from '../animations/landinganimation/data';
+import customSoftwareIcon from '../assets/Custom Software Icon.svg';
+import mobileAppsIcon from '../assets/mobileIcon.svg';
+import websitesIcon from '../assets/websiteIcon.svg';
+import revolutionBackground from '../assets/repeatingBackground.svg';
+import infoBackground from '../assets/infoBackground.svg';
 
 const useStyles = makeStyles((theme) => ({
   animation: {

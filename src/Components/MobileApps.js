@@ -8,15 +8,15 @@ import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Hidden from '@material-ui/core/Hidden';
 
-import forwardArrow from 'assets/forwardArrow.svg';
-import backArrow from 'assets/backArrow.svg';
-import swiss from 'assets/swissKnife.svg';
-import access from 'assets/extendAccess.svg';
-import engagement from 'assets/increaseEngagement.svg';
+import forwardArrow from '../assets/forwardArrow.svg';
+import backArrow from '../assets/backArrow.svg';
+import swiss from '../assets/swissKnife.svg';
+import access from '../assets/extendAccess.svg';
+import engagement from '../assets/increaseEngagement.svg';
 
 import integrationAnimation from 'animations/integrationAnimation/data.json';
 
-import CallToAction from 'Components/UI/CallToAction';
+import CallToAction from './UI/CallToAction';
 
 const useStyles = makeStyles((theme) => ({
   heading: {

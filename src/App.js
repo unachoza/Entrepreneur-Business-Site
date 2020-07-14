@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
-import { ThemeProvider, mStyles } from '@material-ui/core/styles';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import theme from 'Components/UI/Theme.styles.js';
-import Button from '@material-ui/core/Button';
-import Header from 'Components/UI/Header.component';
-import Footer from 'Components/UI/Footer';
-import ThisLottie from 'Components/UI/Lottie';
-import Services from 'Components/Services';
-import CustomSoftware from 'Components/CustomSoftware';
-import MobileApps from 'Components/MobileApps';
-import Websites from 'Components/Websites';
-import Revolution from 'Components/Revolution';
-import About from 'Components/About';
-import Contact from 'Components/Contact';
-import Estimate from 'Components/Estimate';
-import Form from 'Components/Form/Form.component';
-import BasicTextFields from 'Components/Form/Form.material.js';
-import 'App.css';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import theme from './Components/UI/Theme.styles.js';
+import Header from './Components/UI/Header.component';
+import Footer from './Components/UI/Footer';
+import ThisLottie from './Components/UI/Lottie';
+import Services from './Components/Services';
+import CustomSoftware from './Components/CustomSoftware';
+import MobileApps from './Components/MobileApps';
+import Websites from './Components/Websites';
+import Revolution from './Components/Revolution';
+import About from './Components/About';
+import Contact from './Components/Contact';
+import Estimate from './Components/Estimate';
+import './App.css';
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);

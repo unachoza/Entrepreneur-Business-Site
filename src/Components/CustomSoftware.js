@@ -8,19 +8,19 @@ import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Hidden from '@material-ui/core/Hidden';
 
-import backArrow from 'assets/backArrow.svg';
-import forwardArrow from 'assets/forwardArrow.svg';
-import lightbulb from 'assets/bulb.svg';
-import cash from 'assets/cash.svg';
-import stopwatch from 'assets/stopwatch.svg';
-import roots from 'assets/root.svg';
+import backArrow from '../assets/backArrow.svg';
+import forwardArrow from '../assets/forwardArrow.svg';
+import lightbulb from '../assets/bulb.svg';
+import cash from '../assets/cash.svg';
+import stopwatch from '../assets/stopwatch.svg';
+import roots from '../assets/root.svg';
 
-import documentsAnimation from 'animations/documentsAnimation/data';
-import scaleAnimation from 'animations/scaleAnimation/data.json';
-import automationAnimation from 'animations/automationAnimation/data.json';
-import uxAnimation from 'animations/uxAnimation/data';
+import documentsAnimation from '../animations/documentsAnimation/data';
+import scaleAnimation from '../animations/scaleAnimation/data.json';
+import automationAnimation from '../animations/automationAnimation/data.json';
+import uxAnimation from '../animations/uxAnimation/data';
 
-import CallToAction from 'Components/UI/CallToAction';
+import CallToAction from './UI/CallToAction';
 
 const useStyles = makeStyles((theme) => ({
   heading: {
